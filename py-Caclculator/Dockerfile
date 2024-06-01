@@ -15,10 +15,10 @@ WORKDIR /app
 COPY . .
 
 ############################################
-# HERE STARTS THE MAGIC OF MULTI STAGE BUILD
+# MULTI STAGE BUILD
 ############################################
 
-FROM gcr.io/distroless/python3-debian11
+FROM gcr.io/distroless/python3
 
 # Set the working directory in the distroless image
 WORKDIR /app
@@ -27,4 +27,4 @@ WORKDIR /app
 COPY --from=build /app /app
 
 # Set the entrypoint for the container to run the Python application
-ENTRYPOINT ["python3", "your_app.py"]
+ENTRYPOINT ["python3", "calculator.py"]
